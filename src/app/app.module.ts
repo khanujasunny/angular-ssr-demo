@@ -1,3 +1,6 @@
+import { NgtUniversalModule } from '@ng-toolkit/universal';
+import { CommonModule } from '@angular/common';
+import { TransferHttpCacheModule } from '@nguniversal/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -6,7 +9,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ProjectsComponent } from './projects/projects.component';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
+import {ModuleMapLoaderModule} from '@nguniversal/module-map-ngfactory-loader';
 
 @NgModule({
   declarations: [
@@ -15,12 +19,17 @@ import { HttpClientModule } from '@angular/common/http';
     AboutComponent,
     ProjectsComponent
   ],
-  imports: [
-    BrowserModule,
+  imports:[
+ CommonModule,
+NgtUniversalModule,
+
+ TransferHttpCacheModule,
+HttpClientModule,
+
+ModuleMapLoaderModule,
     AppRoutingModule,
 	HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
 })
 export class AppModule { }
